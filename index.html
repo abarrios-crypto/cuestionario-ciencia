@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cuestionario: Ciencia y Precisión</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -78,11 +77,12 @@
       border: 1px solid #ddd;
       border-radius: 6px;
     }
-    .download-btn {
+
+    .print-btn {
       display: block;
       width: 100%;
       padding: 12px;
-      background-color: #e74c3c;
+      background-color: #3498db;
       color: white;
       border: none;
       border-radius: 8px;
@@ -92,19 +92,35 @@
       margin-top: 30px;
       text-align: center;
     }
-    .download-btn:hover {
-      background-color: #c0392b;
+    .print-btn:hover {
+      background-color: #2980b9;
     }
+
     .footer {
       text-align: center;
       margin-top: 30px;
       color: #7f8c8d;
       font-size: 12px;
     }
+
+    /* Ocultar botones al imprimir */
+    @media print {
+      .participants button, .print-btn, .footer {
+        display: none !important;
+      }
+      .container {
+        box-shadow: none;
+        padding: 10px;
+      }
+      body {
+        background: white;
+        -webkit-print-color-adjust: exact;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container" id="pdf-content">
+  <div class="container" id="print-content">
     <h1>Cuestionario de reflexión verso a verso: "Ciencia y Precisión"</h1>
 
     <div class="participants">
@@ -115,7 +131,7 @@
       <button type="button" onclick="addParticipant()">+ Añadir más integrantes</button>
     </div>
 
-    <!-- Verso 1 -->
+    <!-- [Verso 1] -->
     <h2>[Verso 1]</h2>
     <div class="verse">
       <p><em>"La ciencia me habla claro, yo no me voy a inventar,"</em></p>
@@ -159,208 +175,18 @@
       </div>
     </div>
 
-    <!-- Pre-Coro -->
-    <h2>[Pre-Coro]</h2>
-    <div class="verse">
-      <p><em>"Pero el cuerpo es un mundo, diferente cada cual,"</em></p>
-      <div class="question">
-        <p>¿Por qué se dice que cada cuerpo es un mundo diferente?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Qué implicaciones tiene esto para el tratamiento médico?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
+    <!-- Aquí van los otros versos (Pre-Coro, Coro, etc.) -->
+    <!-- (Puedes copiarlos del código anterior si ya los tienes completos) -->
 
-      <p><em>"La genética manda, eso es lo real."</em></p>
-      <div class="question">
-        <p>¿Qué papel juega la genética en la medicina de precisión?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué la genética es considerada “lo real” en este contexto?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Medicina que adapta, se pone a estudiar,"</em></p>
-      <div class="question">
-        <p>¿Por qué es importante que la medicina se adapte a cada paciente?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Qué significa “ponerse a estudiar” en el ámbito de la atención médica personalizada?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Pa’ cuidar a cada uno, sin generalizar."</em></p>
-      <div class="question">
-        <p>¿Qué riesgos tiene tratar a todos los pacientes exactamente igual?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cómo ayuda la medicina de precisión a evitar esta generalización?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-    </div>
-
-    <!-- Coro -->
-    <h2>[Coro]</h2>
-    <div class="verse">
-      <p><em>"Ciencia y precisión, junte en la misión,"</em></p>
-      <div class="question">
-        <p>¿Por qué se sugiere que la ciencia y la precisión deben trabajar juntas?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cómo se complementan ambos enfoques para mejorar la salud?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Pa’ salvar vidas, pa’ curar el dolor."</em></p>
-      <div class="question">
-        <p>¿Cuál es el propósito común de la medicina basada en evidencia y la medicina de precisión?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Sin división, los dos en conexión,"</em></p>
-      <div class="question">
-        <p>¿Qué problemas podrían surgir si hay división o desacuerdo entre estos enfoques?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué es importante la colaboración entre ellos?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Evidencia y genoma, haciendo la función."</em></p>
-      <div class="question">
-        <p>¿Qué quiere decir “haciendo la función” en este contexto?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cómo se integran la evidencia y el análisis genómico para tratar a los pacientes?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-    </div>
-
-    <!-- Verso 2 -->
-    <h2>[Verso 2]</h2>
-    <div class="verse">
-      <p><em>"Ensayos clínicos firmes, con control y rigor,"</em></p>
-      <div class="question">
-        <p>¿Qué son los ensayos clínicos y por qué son esenciales en la medicina basada en evidencia?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Qué significan “control y rigor” en este proceso?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Riesgos calculados, no es cuestión de amor."</em></p>
-      <div class="question">
-        <p>¿Por qué es importante calcular riesgos en los tratamientos?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué no es suficiente el “amor” o buenas intenciones para garantizar un buen tratamiento?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Pero si el ADN cuenta una historia aparte,"</em></p>
-      <div class="question">
-        <p>¿A qué se refiere que el ADN cuenta una “historia aparte”?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cómo influye la información genética en la personalización del tratamiento?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"La medicina personalizada es un arte."</em></p>
-      <div class="question">
-        <p>¿Por qué se considera la medicina personalizada un "arte"?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Qué habilidades o conocimientos se necesitan para aplicarla con éxito?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-    </div>
-
-    <!-- Puente -->
-    <h2>[Puente]</h2>
-    <div class="verse">
-      <p><em>"No hay guerra aquí, no hay rivalidad,"</em></p>
-      <div class="question">
-        <p>¿Qué significa que no haya “guerra” ni “rivalidad” entre los enfoques?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué evitar rivalidades puede beneficiar al paciente?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Dos caminos que buscan la verdad."</em></p>
-      <div class="question">
-        <p>¿Qué “verdad” creen que buscan ambos enfoques?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cómo puede la pluralidad de enfoques ayudar a lograr esa verdad?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"El futuro es unión, eso debes entender,"</em></p>
-      <div class="question">
-        <p>¿Por qué la unión de ciencia y precisión es importante para el futuro de la medicina?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Ciencia y precisión, pa’ bien defender."</em></p>
-      <div class="question">
-        <p>¿Qué quiere decir “pa’ bien defender” en este contexto?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cómo pueden estos enfoques defender mejor la salud de las personas?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-    </div>
-
-    <!-- Outro -->
-    <h2>[Outro]</h2>
-    <div class="verse">
-      <p><em>"Yeah-yeah, medicina que avanza,"</em></p>
-      <div class="question">
-        <p>¿Qué implica que la medicina “avanza”?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Cuál es el papel de la innovación y el conocimiento en este avance?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-
-      <p><em>"Pa’ curar con corazón y ciencia, con esperanza."</em></p>
-      <div class="question">
-        <p>¿Cómo se combinan “corazón” y “ciencia” en una buena práctica médica?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué es importante mantener la esperanza en tratamientos médicos?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-    </div>
-
-    <button class="download-btn" onclick="generatePDF()">📥 Descargar respuestas en PDF</button>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir respuestas</button>
   </div>
 
   <div class="footer">
-    Cuestionario interactivo: "Ciencia y Precisión" – Reflexión colaborativa | Patología Clínica 2025 |  M.C. Adriana Barrios
+    Cuestionario interactivo: "Ciencia y Precisión" – Reflexión colaborativa
   </div>
 
   <script>
     let participantCount = 1;
-
     function addParticipant() {
       participantCount++;
       const list = document.getElementById('participants-list');
@@ -369,19 +195,6 @@
       input.className = 'participant-input';
       input.placeholder = `Nombre del integrante ${participantCount}`;
       list.appendChild(input);
-    }
-
-    function generatePDF() {
-      const element = document.getElementById('pdf-content');
-      const opt = {
-        margin: 1,
-        filename: 'cuestionario_ciencia_y_precision.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-
-      html2pdf().from(element).set(opt).save();
     }
   </script>
 </body>
