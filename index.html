@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cuestionario: Ciencia y Precisión</title>
+  <title>Caso Clínico: Ciencia y Precisión</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,6 +11,7 @@
       color: #333;
       line-height: 1.6;
       padding: 20px;
+      margin: 0;
     }
     .container {
       max-width: 900px;
@@ -18,7 +19,7 @@
       background: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     h1 {
       text-align: center;
@@ -26,25 +27,40 @@
       margin-bottom: 20px;
     }
     h2 {
-      color: #3498db;
+      color: #2980b9;
       border-bottom: 2px solid #3498db;
       padding-bottom: 5px;
       margin-top: 25px;
     }
-    .verse {
-      background-color: #f1f8ff;
+    .info-group {
+      background: #f0f7ff;
       padding: 15px;
-      border-left: 4px solid #3498db;
-      margin-bottom: 20px;
       border-radius: 8px;
+      border: 1px solid #b3d9ff;
+      margin-bottom: 20px;
     }
-    .question {
-      margin: 15px 0;
-    }
-    .question p {
+    .info-group label {
+      display: block;
+      margin: 10px 0 5px;
       font-weight: 600;
-      margin-bottom: 8px;
       color: #2c3e50;
+    }
+    .info-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    p {
+      margin: 12px 0;
+    }
+    .highlight {
+      background: #e3f2fd;
+      padding: 15px;
+      border-left: 4px solid #2196f3;
+      border-radius: 8px;
+      margin: 15px 0;
     }
     textarea {
       width: 100%;
@@ -53,149 +69,120 @@
       border-radius: 6px;
       resize: vertical;
       min-height: 80px;
-      font-size: 14px;
+      font-size: 15px;
+      margin: 8px 0;
     }
-    .participants {
-      margin: 25px 0;
-    }
-    .participants button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      background-color: #27ae60;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .participants button:hover {
-      background-color: #219a52;
-    }
-    .participant-input {
-      margin: 5px 0;
-      padding: 8px;
-      width: 100%;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
-
     .print-btn {
       display: block;
       width: 100%;
-      padding: 12px;
-      background-color: #3498db;
+      padding: 14px;
+      background-color: #2980b9;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 30px;
-      text-align: center;
+      margin: 30px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .print-btn:hover {
-      background-color: #2980b9;
+      background-color: #1f6aad;
     }
-
     .footer {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 40px;
       color: #7f8c8d;
-      font-size: 12px;
+      font-size: 13px;
     }
 
-    /* Ocultar botones al imprimir */
+    /* Ocultar botón al imprimir */
     @media print {
-      .participants button, .print-btn, .footer {
-        display: none !important;
+      .print-btn {
+        display: none;
+      }
+      .footer {
+        display: none;
       }
       .container {
         box-shadow: none;
         padding: 10px;
       }
       body {
-        background: white;
         -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container" id="print-content">
-    <h1>Cuestionario de reflexión verso a verso: "Ciencia y Precisión"</h1>
+  <div class="container" id="print-area">
+    <h1>🔍 Caso Clínico: "El tumor que no respondía"</h1>
 
-    <div class="participants">
-      <h2>Integrantes del equipo</h2>
-      <div id="participants-list">
-        <input type="text" class="participant-input" placeholder="Nombre del integrante 1" />
-      </div>
-      <button type="button" onclick="addParticipant()">+ Añadir más integrantes</button>
+    <!-- Campos: Nombre del estudiante y Grupo -->
+    <div class="info-group">
+      <label for="student-name">Nombre del estudiante</label>
+      <input type="text" id="student-name" placeholder="Escribe tu nombre completo" />
+
+      <label for="student-group">Grupo o equipo</label>
+      <input type="text" id="student-group" placeholder="Ej: Grupo 3B, Equipo Alpha, etc." />
     </div>
 
-    <!-- [Verso 1] -->
-    <h2>[Verso 1]</h2>
-    <div class="verse">
-      <p><em>"La ciencia me habla claro, yo no me voy a inventar,"</em></p>
-      <div class="question">
-        <p>¿Qué significa que "la ciencia habla claro"?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué es importante basar el conocimiento en hechos y no en inventos o rumores?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
+    <p><strong>Contexto real:</strong> Inspirado en casos de oncología de precisión del proyecto The Cancer Genome Atlas (TCGA).</p>
 
-      <p><em>"Evidencia en mano, pa’ la cura aplicar."</em></p>
-      <div class="question">
-        <p>¿Qué se entiende por “evidencia” en el contexto médico?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué es esencial usar evidencia para aplicar tratamientos?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
+    <h2>📌 Caso clínico</h2>
+    <p>
+      <strong>Paciente:</strong> María, 42 años, diagnosticada con cáncer de pulmón no microcítico (CPNM).
+    </p>
+    <p>
+      <strong>Tratamiento inicial:</strong> Quimioterapia estándar (cisplatino + pemetrexed).
+    </p>
+    <p>
+      <strong>Resultado:</strong> Progresión del tumor a las 4 semanas. No responde al tratamiento convencional.
+    </p>
 
-      <p><em>"No es cuestión de corazonada, ni de intuición,"</em></p>
-      <div class="question">
-        <p>¿Qué diferencias hay entre un tratamiento basado en evidencia y uno basado solo en corazonadas o intuición?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Qué problemas podrían surgir si se confiara únicamente en la intuición en medicina?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
+    <p>
+      <strong>Análisis genómico del tumor:</strong>
+    </p>
+    <ul>
+      <li>Mutación en el gen <strong>EGFR L858R</strong> (activadora).</li>
+      <li>Ausencia de fusión <em>ALK</em> o <em>ROS1</em>.</li>
+      <li>Bajo índice de mutación tumoral (TMB bajo).</li>
+      <li><strong>PD-L1 negativo</strong> (inmunoterapia no recomendada).</li>
+    </ul>
 
-      <p><em>"Aquí hay datos duros, no solo opinión."</em></p>
-      <div class="question">
-        <p>¿Qué quiere decir “datos duros” y cómo contrastan con las opiniones?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
-      <div class="question">
-        <p>¿Por qué es fundamental tener datos objetivos en la toma de decisiones médicas?</p>
-        <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-      </div>
+    <div class="highlight">
+      <h3>🎯 Tu misión: Decide el siguiente paso</h3>
+      
+      <p><strong>1.</strong> Según la <strong>medicina basada en evidencias</strong>, ¿qué tipo de prueba respalda el uso de inhibidores de EGFR en pacientes con esta mutación?</p>
+      <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+
+      <p><strong>2.</strong> ¿Por qué la <strong>medicina de precisión</strong> indica que María debería recibir un inhibidor de EGFR (como gefitinib u osimertinib) en lugar de continuar con quimioterapia?</p>
+      <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+
+      <p><strong>3.</strong> Si no se hubiera hecho el análisis genómico, ¿qué riesgo habría al mantener la quimioterapia?</p>
+      <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
     </div>
 
-    <!-- Aquí van los otros versos (Pre-Coro, Coro, etc.) -->
-    <!-- (Puedes copiarlos del código anterior si ya los tienes completos) -->
+    <h2>💡 Clave de aprendizaje</h2>
+    <ul>
+      <li>✅ <strong>MBE:</strong> Ensayos clínicos aleatorizados demostraron que los inhibidores de EGFR mejoran la supervivencia en pacientes con mutación <em>EGFR</em>.</li>
+      <li>✅ <strong>Precisión:</strong> El tratamiento se adapta al perfil genético del tumor.</li>
+      <li>✅ <strong>Impacto real:</strong> Este enfoque ha aumentado la supervivencia en subgrupos de pacientes con CPNM.</li>
+    </ul>
 
-    <button class="print-btn" onclick="window.print()">🖨️ Imprimir respuestas</button>
+    <p style="font-style: italic; text-align: center; margin-top: 25px; color: #555;">
+      🧠 "La ciencia nos guía, la precisión nos transforma. Hoy tú decidiste con datos, no con suposiciones."
+    </p>
+
+    <!-- Botón de imprimir -->
+    <button class="print-btn" onclick="window.print()">
+      🖨️ Imprimir respuestas
+    </button>
   </div>
 
   <div class="footer">
-    Cuestionario interactivo: "Ciencia y Precisión" – Reflexión colaborativa
+    Ejercicio interactivo – Biomedicina con enfoque en evidencia y precisión
   </div>
-
-  <script>
-    let participantCount = 1;
-    function addParticipant() {
-      participantCount++;
-      const list = document.getElementById('participants-list');
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.className = 'participant-input';
-      input.placeholder = `Nombre del integrante ${participantCount}`;
-      list.appendChild(input);
-    }
-  </script>
 </body>
 </html>
